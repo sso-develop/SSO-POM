@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!-- 
+	<bean id="shardedJedisPoolConfig" class="com.lambert.common.uitl.redis.ShardedJedisPoolConfig"
+		init-method="init">
+		<property name="addresses" value="127.0.0.1:6379:123456"/>
+	</bean>
+	<bean id="redisShardUtil" class="com.lambert.common.uitl.redis.RedisShardUtil">
+		<property name="shardedJedisPoolConfig" ref="shardedJedisPoolConfig" />
+	</bean> -->
+	<bean id="tokenManager" class="com.lambert.core.service.token.LocalTokenManager">
+	</bean>
+</beans>

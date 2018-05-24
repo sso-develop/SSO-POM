@@ -1,0 +1,136 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
+    margin:0;
+    padding:0;
+}
+.container{
+	width: 980px;
+	margin: 0 auto;
+}
+/* 清除浮动 */
+.clearfix:after{
+	 content:"";
+	 display: block;
+	 clear:both;
+	 height:0;
+	 line-height:0; 
+	 visibility: hidden;
+}
+.clearfix{
+	zoom:1;     /* 为了兼容IE浏览器 */
+}
+.header{
+	width: 100%;
+	height: 65px;
+}
+.logo img{
+	width: 228px;
+	height: 39px;
+	margin-top: 15px;
+	float: left;
+}
+.logo span{
+	display: inline-block;
+	font-size: 12px;
+	color: #8b8b8b;
+	float: left;
+	margin-top: 32px;
+}
+.main{
+	width: 100%;
+	min-width: 1200px;
+	height: 100%;
+	min-height: 585px;
+	background: url(../image/login_bg.jpg) no-repeat center center;
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+  	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../image/login_bg.jpg', sizingMethod='scale');
+	-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../image/login_bg.jpg', sizingMethod='scale')";
+	border-top: 1px solid transparent;
+}
+.login{
+	width: 345px;
+	height: 359px;
+	background-color: #fff;
+	border-radius: 4px;
+	margin-top: 111px;
+	float: right;
+	-webkit-box-shadow:0 0 10px #ccc;  
+	-moz-box-shadow:0 0 10px #ccc;  
+	box-shadow:0 0 10px #ccc;
+}
+.login_cont{
+	margin: 20px;
+}
+.login_cont h3{
+	font-size: 20px;
+	line-height: 46px;
+	color: #555;
+	text-indent: 7px;
+	border-bottom: 1px solid #e2e2e2;
+}
+.login_cont label{
+	display: block;
+	font-size: 13px;
+	color: #333;
+	line-height: 26px;
+}
+.login_cont form{
+	margin-top: 20px;
+}
+.login_cont form input{
+	text-indent: 12px;
+}
+
+.name,.pwd{
+	width: 288px;
+	height: 40px;
+	border-radius: 5px;
+	border: 1px solid #d1d1d1;
+}
+.yzm{
+	width: 144px;
+	height: 40px;
+	border-radius: 5px;
+	border: 1px solid #d1d1d1;
+	float: left;
+}
+.f_img{
+	width: 130px;
+	height: 42px;
+	float: left;
+	margin-left: 14px;
+}
+.btn{
+	margin-top: 15px;
+}
+.loginBtn{
+	width: 100%;
+	height: 40px;
+	font-size: 18px;
+	float: left;
+	background-color: #f9a505;
+	border: 1px solid #f9a505;
+	border-radius: 5px;
+	color: #fff;
+}
+.btn a{
+	float: left;
+	margin-left: 18px;
+	line-height: 40px;
+}
+.prompt{
+	float: right;
+	margin-top: 15px;
+	text-align: center;
+	font-size: 14px;
+}
+.footer{
+	height: 49px;
+}
+.footer p{
+	line-height: 49px;
+	font-size: 12px;
+	color: #666;
+}

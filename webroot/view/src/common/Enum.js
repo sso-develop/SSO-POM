@@ -1,0 +1,27 @@
+module.exports = {
+	requestUrls:{
+		sysApp:{
+			insertUumsSysAppUrl:'/insertUumsSysApp.json',
+			queryUumsSysAppByPagerUrl:'/queryUumsSysAppByPager.json',
+        	deleteUumsSysAppByIdUrl:'/deleteUumsSysAppById.json',
+            queryAllUumsSysAppUrl:'/queryAllUumsSysApp.json',
+            updateUumsSysAppByIdUrl:'/updateUumsSysAppById.json'
+		},
+		sysPermission:{
+			queryUumsSysPermissionByPagerUrl:'/queryUumsSysPermissionByPager.json',
+			insertUumsSysPermissionUrl:'/insertUumsSysPermission.json',
+			deleteUumsSysPermissionByIdUrl:'/deleteUumsSysPermissionById.json',
+			updateUumsSysPermissionByIdUrl:'/updateUumsSysPermissionById.json',
+			queryUumsSysPermissionUrl:'/queryUumsSysPermission.json'
+		},
+		sysUser:{
+			queryUumsUserInfoByPagerUrl:'/queryUumsUserInfoByPager.json',
+			insertUumsUserinfoUrl:'/insertUumsUserinfo.json',
+			deleteUumsUserInfoByIdUrl:'/deleteUumsUserInfoById.json',
+			updateUumsUserInfoByIdUrl:'/updateUumsUserInfoById.json',
+			queryUumsUserInfoByIdUrl:'/queryUumsUserInfoById.json',
+			insertUumsUserPermissionRelationUrl:'/insertUumsUserPermissionRelation.json',
+			deleteUumsUserPermissionRelationUrl:'/deleteUumsUserPermissionRelation.json'
+		}
+	}
+}

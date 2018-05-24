@@ -1,0 +1,32 @@
+import React, { Component } from 'react';
+
+
+
+class Side extends Component {
+  render() {
+    return (
+       <div>
+       		sgs
+       </div>
+    );
+  }
+}
+
+export default Side;
+
+
+//全局安装webpack，优点是打包时可以直接输webpack命令
+npm install -g webpack
+
+//在本项目中安装webpack，--save-dev的意思是将依赖写入项目的package.json文件
+npm install --save-dev webpack
+
+
+
+# 进入项目目录
+# 确定已经有 package.json，没有就通过 npm init 创建
+# 安装 webpack 依赖
+$ npm install webpack --save-dev
+# 安装react.js依赖（i是install的简写，-S是--save的简写）
+$ npm i react react-dom -S
+

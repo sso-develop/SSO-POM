@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lambert.common.uums.dal.daointerface.UumsUserInfoDAO">
+
+	<resultMap id="RM_UumsUserInfo" type="com.lambert.common.uums.dal.dataobject.UumsUserInfoDO">
+		<id property="id" column="id" />
+		<result property="createDate" column="create_date" />
+		<result property="modifyDate" column="modify_date" />
+		<result property="operatorName" column="operator_name" />
+		<result property="password" column="password" />
+		<result property="realName" column="real_name" />
+		<result property="nickName" column="nick_name" />
+		<result property="mobile" column="mobile" />
+		<result property="staffNo" column="staff_no" />
+	</resultMap>
+
+	<sql id="UumsUserInfo_columns">
+		id,
+		create_date,
+		modify_date,
+		operator_name,
+		password,
+		real_name,
+		nick_name,
+		mobile,
+		staff_no
+	</sql>
+	
+	<select id="queryUumsUserInfo" resultMap="RM_UumsUserInfo">
+		SELECT 
+			<include refid="UumsUserInfo_columns" />
+		FROM uums_user_info
+	</select>
+	
+	<select id="queryUumsUserInfoById" resultMap="RM_UumsUserInfo">
+		SELECT 
+			<include refid="UumsUserInfo_columns" />
+		FROM uums_user_info WHERE id = ${id}
+	</select>
+	<select id="queryUumsUserInfoByMobile" resultMap="RM_UumsUserInfo">
+		SELECT 
+			<include refid="UumsUserInfo_columns" />
+		FROM uums_user_info WHERE mobile = ${mobile}
+	</select>
+	
+	<select id="queryUumsUserInfoByPager" resultMap="RM_UumsUserInfo">
+		SELECT 
+			<include refid="UumsUserInfo_columns" />
+		FROM uums_user_info WHERE 1=1
+		<if test="nickName != null and nickName != ''">  
+		    AND nick_name LIKE CONCAT('%',#{nickName},'%')   
+		</if> 
+		order by create_date desc
+        limit #{offset},#{limit} 
+	</select>
+	
+	<select id="queryUumsUserInfoByOperatorName" resultMap="RM_UumsUserInfo">
+		SELECT 
+			<include refid="UumsUserInfo_columns" />
+		FROM uums_user_info where operator_name = #{operatorName}
+	</select>
+	
+	<select id="queryUumsUserInfoCountByPager" resultType="int">
+		SELECT 
+			count(1)
+		FROM uums_user_info
+	</select>
+	
+	
+	
+	
+	
+	<insert id="insertUumsUserInfo" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO uums_user_info(
+			create_date,
+			modify_date,
+			operator_name,
+			real_name,
+			nick_name,
+			password,
+			mobile,
+			staff_no
+		)values(
+			CURRENT_TIMESTAMP,
+			CURRENT_TIMESTAMP,
+			#{operatorName},
+			#{nickName},
+			#{realName},
+			#{password},
+			#{mobile},
+			#{staffNo}
+		)
+	</insert>
+	
+	<delete id="deleteUumsUserInfoById">
+		DELETE FROM uums_user_info WHERE id =#{id}
+	</delete>
+	
+	<update id="updateUumsUserInfoById">
+		UPDATE uums_user_info set 
+			modify_date = CURRENT_TIMESTAMP,
+			operator_name = #{operatorName}, 
+			nick_name = #{nickName},
+			real_name = #{realName},
+			mobile = #{mobile},
+			staff_no = #{staffNo}
+		WHERE id=#{id}
+	</update>
+</mapper>
