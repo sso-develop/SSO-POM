@@ -9,7 +9,8 @@
 * 权限管理
 ### 后端
  #### 构建AND部署
-* clean install -P local tomcat7:run
+* 第一次构建时需要办根目录下pom.xm中modules去掉后再构建（mvn clean install），构建成功后再放开modules执行以下命令.
+* mvn clean install -P local tomcat7:run
 ### 前端
  * NODEJS+ANTD
  * 前端目录  SSO-POM\webroot\view
