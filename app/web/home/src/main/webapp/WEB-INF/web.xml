@@ -59,7 +59,7 @@
 		</init-param>
 		<init-param>
 			<param-name>sso.server.url</param-name>
-			<param-value>http://localhost:8081</param-value>
+			<param-value>http://localhost:8081/sso</param-value>
 		</init-param>
 		<init-param>
 			<param-name>sso.server.code</param-name>
