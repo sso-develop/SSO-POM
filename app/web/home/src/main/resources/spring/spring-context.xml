@@ -13,11 +13,38 @@
 
 	<mvc:annotation-driven />
 
-
+	<!-- 
  	<bean id="frameworkConf" class="com.lambert.common.uitl.FrameworkPropertiesFactoryBean">
 		<property name="locations" value="$[logback.conf.location]" />
 		<property name="refreshInterval" value="$[log4j.conf.refreshInterval]" />
 	</bean> 
+	 -->
+	 
+	 
+	 	<!-- view -->
+    <bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+        <property name="resourceLoaderPath" value ="/"/>   <!-- 配置velocity页面路径 -->
+        <!-- 設置模板防止位置 -->
+        <property name="velocityProperties">
+		  <props>
+		    <prop key="directive.foreach.counter.name">loopCounter</prop>
+		    <prop key="directive.foreach.counter.initial.value">0</prop>
+		    <prop key="input.encoding">UTF-8</prop><!-- 指定模板引擎进行模板处理的编码 -->
+		    <prop key="output.encoding">UTF-8</prop><!-- 指定输出流的编码 -->
+		    <prop key="resource.loader">$[velocityl.resource.loader]</prop>
+		    <prop key="file.resource.loader.class">$[velocity.file.resource.loader.class]</prop>
+		    <prop key="file.resource.loader.path">$[velocity.file.resource.loader.path]</prop>
+		  <!--   <prop key="class.resource.loader.class">$[velocity.class.resource.loader.class]</prop>-->
+		  </props>
+		</property>
+    </bean>
+    
+   <!--VelocityViewResolver视图配置-->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+       <property name="suffix" value=".vm"/>
+       <property name="prefix" value=""/>
+      <property name="contentType" value="text/html;charset=UTF-8"/>
+   </bean>
 
 	<!-- <context:component-scan base-package="com.linzekuan.site"/> -->
 	<!-- 定义视图文件解析 -->
