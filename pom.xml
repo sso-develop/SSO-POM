@@ -240,7 +240,7 @@
 		    <version>2.0</version>
 		</dependency>
 	</dependencies>
-<!--
+
 	<modules>
 		<module>app/common/util</module>
 		<module>app/core/service</module>
@@ -256,7 +256,7 @@
 		<module>app/web/feedback</module>
 		<module>assembly</module>
 	</modules>
--->
+
 
 
 	<profiles>
