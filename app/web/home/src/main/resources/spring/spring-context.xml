@@ -19,7 +19,10 @@
 		<property name="refreshInterval" value="$[log4j.conf.refreshInterval]" />
 	</bean> 
 	 -->
-	 
+	<bean id="clienFilterConfig" class="com.lambert.common.service.facade.filter.ClientFilterConfig" init-method="init">
+		   <property name="ssoServerUrl" value ="$[sso.server.url]"/>
+		   <property name="ssoAppCode" value ="$[sso.app.code]"/>
+	</bean>
 	 
 	 	<!-- view -->
     <bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">

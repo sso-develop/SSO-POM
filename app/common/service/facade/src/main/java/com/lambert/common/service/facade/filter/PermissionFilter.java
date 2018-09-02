@@ -5,7 +5,6 @@
 package com.lambert.common.service.facade.filter;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -23,7 +22,6 @@ import com.alibaba.fastjson.JSON;
 import com.lambert.common.service.facade.model.Permission;
 import com.lambert.common.service.facade.model.SessionPermission;
 import com.lambert.common.service.facade.model.SessionUser;
-import com.lambert.common.service.facade.result.SSOResultCode;
 import com.lambert.common.service.facade.util.ApplicationPermissionUtils;
 import com.lambert.common.service.facade.util.SessionUtils;
 

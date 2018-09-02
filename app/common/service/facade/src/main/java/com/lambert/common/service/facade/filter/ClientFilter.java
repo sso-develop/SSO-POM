@@ -43,8 +43,8 @@ public abstract class ClientFilter implements Filter {
 	private PathMatcher pathMatcher = null;
 	
 	public void init(FilterConfig filterConfig) {
-		ssoServerUrl = filterConfig.getInitParameter("sso.server.url");
-		ssoAppCode = filterConfig.getInitParameter("sso.server.code");
+		ssoServerUrl = ClientFilterConfig.clientFilterProperties.getSsoServerUrl();
+		ssoAppCode = ClientFilterConfig.clientFilterProperties.getSsoAppCode();
 		if (StringUtils.isBlank(ssoServerUrl)) {
 			throw new IllegalArgumentException("ssoServerUrl不能为空");
 		}
