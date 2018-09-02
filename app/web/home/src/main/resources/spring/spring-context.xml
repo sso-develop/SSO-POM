@@ -47,15 +47,12 @@
        <property name="suffix" value=".vm"/>
        <property name="prefix" value=""/>
       <property name="contentType" value="text/html;charset=UTF-8"/>
+      <property name="exposeRequestAttributes" value="true"/>
+      <property name="exposeSessionAttributes" value="true" /> <!--是否开放session属性-->  
    </bean>
 
-	<!-- <context:component-scan base-package="com.linzekuan.site"/> -->
-	<!-- 定义视图文件解析 -->
-	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="$[web.view.prefix]" />
-		<property name="suffix" value="$[web.view.suffix]" />
-	</bean>
+	
+	
 
 	<!-- 对静态资源文件的访问， 将无法mapping到Controller的path交给default servlet handler处理 -->
 	<!-- <mvc:default-servlet-handler /> -->
