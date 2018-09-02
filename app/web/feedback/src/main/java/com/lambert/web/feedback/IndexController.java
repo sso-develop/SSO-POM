@@ -21,7 +21,7 @@ public class IndexController {
 		//SessionUser sessionUser = SessionUtils.getSessionUser(request);
 		SessionUser sessionUser = SessionUtils.getSessionUser();
 		model.addAttribute("userName", sessionUser.getAccount());
-     	return "dex";
+     	return "index";
 		
 	}
 	
