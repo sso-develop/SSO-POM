@@ -15,8 +15,11 @@ import com.lambert.common.uitl.result.DefaultResult;
 import com.lambert.common.uitl.result.DefaultWebUtils;
 import com.lambert.common.uitl.result.Pager;
 import com.lambert.common.uitl.result.ResultModel;
-import com.lambert.web.feedback.vo.PageResult;
-
+/**
+ * 
+ * @author lambert  2018-10-15 22:29:56
+ *
+ */
 @Controller
 public class UumsSysAppController {
 	@Autowired

@@ -13,10 +13,9 @@ import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.classic.joran.JoranConfigurator;
 import ch.qos.logback.core.joran.spi.JoranException;
 import ch.qos.logback.core.util.StatusPrinter;
-
 /**
  * 加载平台属性文件，同时初始化Log4J引擎
- * 
+ * @author lambert  2018-10-15 22:16:52
  *
  */
 public class FrameworkPropertiesFactoryBean extends PropertiesFactoryBean {

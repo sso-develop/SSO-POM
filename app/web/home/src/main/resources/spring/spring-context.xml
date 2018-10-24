@@ -19,6 +19,13 @@
 		<property name="refreshInterval" value="$[log4j.conf.refreshInterval]" />
 	</bean> 
 	 -->
+	 
+	<bean id="systemConfig" class="com.lambert.core.model.model.SystemConfig">
+		   <property name="ssoServerUrl" value ="$[sso.server.url]"/>
+		   <property name="ssoAppCode" value ="$[sso.app.code]"/>
+		   <property name="velocityFile" value="$[velocity.file.resource.loader.path]"/>
+	</bean>
+	 
 	<bean id="clienFilterConfig" class="com.lambert.common.service.facade.filter.ClientFilterConfig" init-method="init">
 		   <property name="ssoServerUrl" value ="$[sso.server.url]"/>
 		   <property name="ssoAppCode" value ="$[sso.app.code]"/>
