@@ -1,5 +1,9 @@
 package com.lambert.biz.uums.model;
-
+/**
+ * 
+ * @author lambert  2018-10-15 21:57:36
+ *
+ */
 public class UumsSysAppModel {
 	private Long id;
 	private String createDate;

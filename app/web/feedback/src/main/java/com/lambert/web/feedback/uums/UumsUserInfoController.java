@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.alibaba.druid.sql.dialect.odps.parser.OdpsExprParser;
-import com.alibaba.fastjson.JSON;
 import com.lambert.biz.uums.UumsUserInfoManager;
 import com.lambert.biz.uums.model.UumsUserInfoModel;
 import com.lambert.biz.uums.queryObj.UumsUserInfoQueryObj;

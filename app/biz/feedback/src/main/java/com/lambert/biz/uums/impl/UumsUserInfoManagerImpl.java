@@ -112,7 +112,7 @@ public class UumsUserInfoManagerImpl implements UumsUserInfoManager{
 				userInfoModel.setNickName(userInfoModel.getRealName());
 			}
 			String staffNo = UUID.randomUUID().toString();
-			String password = UUID.randomUUID().toString();
+			String password = "123456";
 			UumsUserInfoDO userInfoDO = new UumsUserInfoDO(
 					userInfoModel.getOperatorName(),
 					userInfoModel.getRealName(), 

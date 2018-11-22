@@ -4,9 +4,9 @@ import java.util.List;
 
 import com.lambert.common.service.facade.model.LoginInfo;
 import com.lambert.common.service.facade.model.Permission;
-
 /**
  * 身份认证授权服务接口
+ * @author lambert  2018-10-15 22:17:51
  *
  */
 public interface AuthenticationRpcService {

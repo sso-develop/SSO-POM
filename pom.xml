@@ -266,7 +266,7 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<properties.dir>\Users\lambert\project\conf\sso</properties.dir>
+				<properties.dir>\Users\lambert\git\SSO-POM\conf</properties.dir>
 			</properties>
 		</profile>
 		<profile>
@@ -329,7 +329,7 @@
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.2</version>
 				<configuration>
-					<port>8081</port>
+					<port>8082</port>
 					<!-- <url>http://localhost:8080/manager/html</url> -->
 					<server>tomcat</server>
 					<path>/sso</path>
