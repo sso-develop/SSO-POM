@@ -23,5 +23,10 @@
 		<artifactId>lambert-common-util</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
+  	<dependency>  
+  		<groupId>com.lambert</groupId>
+		<artifactId>lambert-core-model</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
   </dependencies>
 </project>
