@@ -58,7 +58,10 @@
 		SELECT <include refid="UumsSysApp_columns" /> FROM uums_sys_app where id = #{id}
 	</select>
 	<select id="queryAllUumsSysApp" resultMap="RM_UumsSysApp">
-		SELECT <include refid="UumsSysApp_columns" /> FROM uums_sys_app 
+		SELECT <include refid="UumsSysApp_columns" /> FROM uums_sys_app where 1 = 1
+		 <if test="appCode != null and appCode != '' ">
+		     AND code = #{appCode}
+		 </if>
 	</select>
 
 	

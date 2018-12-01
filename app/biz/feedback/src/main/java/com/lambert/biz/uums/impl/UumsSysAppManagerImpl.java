@@ -101,9 +101,9 @@ public class UumsSysAppManagerImpl implements UumsSysAppManager {
 	/** 
 	 * @see com.lambert.biz.uums.UumsSysAppManager#queryAllUumsSysApp()
 	 */
-	public DefaultResult<List<UumsSysAppModel>> queryAllUumsSysApp() {
+	public DefaultResult<List<UumsSysAppModel>> queryAllUumsSysApp(UumsSysAppQueryObj queryObj) {
 		try {
-			List<UumsSysAppDO> uumsSysAppDOList = uumsSysAppDAO.queryAllUumsSysApp();
+			List<UumsSysAppDO> uumsSysAppDOList = uumsSysAppDAO.queryAllUumsSysApp(queryObj);
 			List<UumsSysAppModel> appModelList = UumsSysAppConvertor.convertor2Model(uumsSysAppDOList);
 			return new DefaultResult<List<UumsSysAppModel>>(appModelList);
 		} catch (Exception ex) {

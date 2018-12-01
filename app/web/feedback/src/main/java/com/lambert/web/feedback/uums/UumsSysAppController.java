@@ -65,8 +65,8 @@ public class UumsSysAppController {
 	 * @return
 	 */
 	@RequestMapping(value="/queryAllUumsSysApp.json",method = RequestMethod.POST)
-	public @ResponseBody ResultModel queryAllUumsSysApp(ResultModel resultModel){
-		DefaultResult<List<UumsSysAppModel>> result = uumsSysAppManager.queryAllUumsSysApp();
+	public @ResponseBody ResultModel queryAllUumsSysApp(ResultModel resultModel, UumsSysAppQueryObj quqeryObj){
+		DefaultResult<List<UumsSysAppModel>> result = uumsSysAppManager.queryAllUumsSysApp(quqeryObj);
 		DefaultWebUtils.putResult2ModelMap(result, resultModel);
 		return resultModel;
 	}

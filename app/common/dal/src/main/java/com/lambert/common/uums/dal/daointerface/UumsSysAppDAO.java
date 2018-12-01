@@ -51,10 +51,10 @@ public interface UumsSysAppDAO {
 	 * 查询所有App
 	 * @return 
 	 */
-	public List<UumsSysAppDO> queryAllUumsSysApp();
+	public List<UumsSysAppDO> queryAllUumsSysApp(Object object);
 	/**
 	 * App
-	 * 
+	 *
 	 * @param uumsSysAppDO
 	 */
 	public void updateUumsSysAppById(UumsSysAppDO uumsSysAppDO);

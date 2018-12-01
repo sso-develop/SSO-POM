@@ -56,10 +56,9 @@ public class PermissionFilter extends ClientFilter{
 		if (isPermitted(request)){
 			chain.doFilter(request, response);
 		}else{
-			System.err.println("没有访问权限");
-			//response.sendRedirect("/noPermission.jsp");
-			request.getRequestDispatcher("/noPermission.jsp").forward(request, response);  
-			//throw new ServletException("没有访问权限");
+			System.err.println("没有登录权限");
+			String errorUrl = ssoServerUrl + "/loginPermissionError?code="+ssoAppCode;
+			response.sendRedirect(errorUrl);
 		}
 			
 	}
@@ -67,7 +66,6 @@ public class PermissionFilter extends ClientFilter{
 	 * 是否有权限
 	 * 
 	 * @param request
-	 * @param path
 	 * @return
 	 */
 	private boolean isPermitted(HttpServletRequest request) {
@@ -87,12 +85,12 @@ public class PermissionFilter extends ClientFilter{
 	/**
 	 * 保存权限信息
 	 * 
-	 * @param token
+	 * @param
 	 * @return
 	 */
 	public SessionPermission invokePermissionInSession(HttpServletRequest request) {
 		SessionUser user = SessionUtils.getSessionUser(request);
-		
+		LOGGER.info("【invokePermissionInSession】 重新获取权限，token[{}] user[{}] ssoAppCode[{}]",user.getToken(),user.getAccount(),ssoAppCode);
 		List<Permission> dbList = authenticationRpcService.findPermissionList(user.getToken(), ssoAppCode);
 		Set<String> operateSet = new HashSet<String>();
 		for (Permission menu : dbList) {

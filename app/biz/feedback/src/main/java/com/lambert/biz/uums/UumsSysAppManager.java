@@ -41,7 +41,7 @@ public interface UumsSysAppManager {
 	 * 
 	 * @return
 	 */
-	public DefaultResult<List<UumsSysAppModel>> queryAllUumsSysApp();
+	public DefaultResult<List<UumsSysAppModel>> queryAllUumsSysApp(UumsSysAppQueryObj queryObj);
 	/**
 	 * 
 	 * 
