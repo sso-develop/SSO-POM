@@ -86,9 +86,13 @@ public class LoginController {
 		}
 		UumsUserInfoModel user = (UumsUserInfoModel) result.getValue();
 		LoginInfo loginUser = new LoginInfo(user.getId(), user.getOperatorName());
+		//~ 获取 cookie 中的 token
 		String token = CookieUtils.getCookie(request, "token");
+		//~ 若token为null，则没有登录
 		if (StringUtils.isBlank(token) || tokenManager.validate(token) == null) {// 没有登录的情况
+			//~ 创建用户token,同时保存到缓存中
 			token = createToken(loginUser);
+			//~ 添加cookie用户token
 			addTokenInCookie(token, request, response);
 			LoginInfo u = tokenManager.validate(token);
 		}
@@ -126,15 +130,25 @@ public class LoginController {
 		return sbf.toString();
 	}
 
+	/**
+	 * 创建用户token,同时保存到缓存中
+	 * @param loginUser 登录用户信息
+	 * @return token
+	 */
 	private String createToken(LoginInfo loginUser) {
 		// 生成token
 		String token = IdProvider.createUUIDId();
-
 		// 缓存中添加token对应User
 		tokenManager.addToken(token, loginUser);
 		return token;
 	}
-	
+
+	/**
+	 *  向cookie中添加token
+	 * @param token
+	 * @param request
+	 * @param response
+	 */
 	private void addTokenInCookie(String token, HttpServletRequest request, HttpServletResponse response) {
 		// Cookie添加token
 		Cookie cookie = new Cookie("token", token);

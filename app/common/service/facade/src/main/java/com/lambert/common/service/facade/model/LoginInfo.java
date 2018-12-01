@@ -1,6 +1,7 @@
 package com.lambert.common.service.facade.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class LoginInfo implements Serializable{
 	private static final long serialVersionUID = 4507869346123296527L;
@@ -9,11 +10,16 @@ public class LoginInfo implements Serializable{
 	private Long userId;
 	// 登录成功用户名
 	private String account;
+	//登录token
+	private String token;
+	//失效时间
+	private Date   expired;
 
 	public LoginInfo(Long userId, String account) {
 		super();
 		this.userId = userId;
 		this.account = account;
+
 	}
 
 	public Long getUserId() {
@@ -49,6 +55,21 @@ public class LoginInfo implements Serializable{
 			return false;
 		return true;
 	}
-	
 
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+	public Date getExpired() {
+		return expired;
+	}
+
+	public void setExpired(Date expired) {
+		this.expired = expired;
+	}
 }

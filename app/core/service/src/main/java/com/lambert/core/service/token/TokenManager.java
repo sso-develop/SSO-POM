@@ -1,5 +1,6 @@
 package com.lambert.core.service.token;
 
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -60,4 +61,10 @@ public abstract class TokenManager {
 	 * @param token
 	 */
 	public abstract void remove(String token);
+
+	/**
+	 * 获取所有信息
+	 * @return
+	 */
+	public abstract List<LoginInfo> getALLToken();
 }
