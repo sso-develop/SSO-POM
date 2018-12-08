@@ -1,12 +1,16 @@
 package com.lambert.common.service.facade.filter;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.alibaba.fastjson.JSON;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,10 +37,10 @@ public class SSOFilter extends ClientFilter {
 				if (getParameterToken(request) != null) {
 					// 再跳转一次当前URL，以便去掉URL中token参数
 					response.sendRedirect(request.getRequestURL().toString());
-				}else redirectLogin(request, response);
+				}else redirectLogin(request, response,chain);
 			}
 			else if (isLogined(token))chain.doFilter(request, response);
-			else redirectLogin(request, response);
+			else redirectLogin(request, response,chain);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -51,9 +55,18 @@ public class SSOFilter extends ClientFilter {
 	 * @param response
 	 * @throws Exception 
 	 */
-	private void redirectLogin(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	private void redirectLogin(HttpServletRequest request, HttpServletResponse response,FilterChain chain) throws Exception {
 		if (isAjaxRequest(request)) {
-			throw new Exception("未登录或已超时");
+			//chain.doFilter(request, response);
+
+			response.setContentType("application/json");
+			response.setCharacterEncoding("UTF-8");
+			PrintWriter writer = response.getWriter();
+
+			Map<String,String> d = new HashMap<>();
+			d.put("name","重新登录");
+
+			writer.print(JSON.toJSONString(d));
 			/*throw new ServiceException(SsoResultCode.SSO_TOKEN_ERROR, "未登录或已超时");*/
 		}else{
 			String ssoLoginUrl = new StringBuilder().append(ssoServerUrl).append("/login?backUrl=").append(request.getRequestURL()).append("&appCode=").append(ssoAppCode).toString();
@@ -115,7 +128,7 @@ public class SSOFilter extends ClientFilter {
 	 * 
 	 * @param token
 	 * @param account
-	 * @param profile
+	 * @param
 	 */
 	private void invokeAuthenticationInfoInSession(HttpServletRequest request, String token, String account,Long userId) {
 		LOGGER.info("【invokeAuthenticationInfoInSession】：token = "+token+"  account = "+account);
