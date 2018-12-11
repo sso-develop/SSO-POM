@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSON;
+import com.lambert.common.service.facade.result.SSOResult;
+import com.lambert.common.service.facade.result.SSOResultCode;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -57,17 +59,10 @@ public class SSOFilter extends ClientFilter {
 	 */
 	private void redirectLogin(HttpServletRequest request, HttpServletResponse response,FilterChain chain) throws Exception {
 		if (isAjaxRequest(request)) {
-			//chain.doFilter(request, response);
-
-			response.setContentType("application/json");
-			response.setCharacterEncoding("UTF-8");
+			response.setContentType("application/json;charset=utf-8");
 			PrintWriter writer = response.getWriter();
-
-			Map<String,String> d = new HashMap<>();
-			d.put("name","重新登录");
-
-			writer.print(JSON.toJSONString(d));
-			/*throw new ServiceException(SsoResultCode.SSO_TOKEN_ERROR, "未登录或已超时");*/
+			SSOResult<Boolean> result = new SSOResult<Boolean>(SSOResultCode.LOGIN_REQIRE,ssoServerUrl+"/login");
+			writer.print(JSON.toJSONString(result));
 		}else{
 			String ssoLoginUrl = new StringBuilder().append(ssoServerUrl).append("/login?backUrl=").append(request.getRequestURL()).append("&appCode=").append(ssoAppCode).toString();
 			response.sendRedirect(ssoLoginUrl);

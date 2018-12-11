@@ -105,7 +105,7 @@ public class DefaultResult<T> implements Serializable {
         return this.resultCode.isSuccess();
     }
 
-    public String getMessage() {
+    public String getMsg() {
         if (this.customErrMsg != null)
             return this.customErrMsg;
         return this.resultCode.getMessage();

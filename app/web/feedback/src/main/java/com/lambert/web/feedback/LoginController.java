@@ -71,7 +71,7 @@ public class LoginController {
 	public String login(String backUrl, String appCode,String username,String password,String captcha,HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
 		DefaultResult<UumsUserInfoModel> result = uumsUserInfoManager.queryUumsUserInfoCountByOperatorName(username);
 		if(result.getResultCode().getCode() != SSOResultCode.SUCCESS.getCode()){
-			request.setAttribute("errorMessage", result.getMessage());
+			request.setAttribute("errorMessage", result.getMsg());
 			return goLoginPath(backUrl, appCode, request);
 		}
 		

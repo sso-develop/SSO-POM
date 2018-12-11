@@ -72,7 +72,7 @@ public class SSOResultCode implements Serializable{
     /**
      * �?要登�?
      */
-    public static final SSOResultCode LOGIN_REQIRE = new SSOResultCode(RESULT_CODE_LOGIN_REQUIRED, "�?要登�?");
+    public static final SSOResultCode LOGIN_REQIRE = new SSOResultCode(RESULT_CODE_LOGIN_REQUIRED, "需要登录");
 
     /**
      * 权限不足
