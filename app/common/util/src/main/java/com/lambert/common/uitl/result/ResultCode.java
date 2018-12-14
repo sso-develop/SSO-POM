@@ -2,7 +2,7 @@ package com.lambert.common.uitl.result;
 
 import java.io.Serializable;
 
-public class DefaultResultCode implements Serializable{
+public class ResultCode implements Serializable{
 
 	/**
 	 *
@@ -54,44 +54,44 @@ public class DefaultResultCode implements Serializable{
     /**
      * success
      */
-    public static final DefaultResultCode SUCCESS = new DefaultResultCode(RESULT_CODE_SUCCESS_DEFAULT, RESULT_REASON_SUCCESS_DEFAULT);
+    public static final ResultCode SUCCESS = new ResultCode(RESULT_CODE_SUCCESS_DEFAULT, RESULT_REASON_SUCCESS_DEFAULT);
     /**
      * 参数不对
      */
-    public static final DefaultResultCode ILLEGAL_PARAMS = new DefaultResultCode(RESULT_CODE_ILLEGAL_PARAMS_DEFAULT, "参数错误");
+    public static final ResultCode ILLEGAL_PARAMS = new ResultCode(RESULT_CODE_ILLEGAL_PARAMS_DEFAULT, "参数错误");
        /**
         * 后端异常
         */
-    public static final DefaultResultCode SERVER_EXCEPTION = new DefaultResultCode(RESULT_CODE_SERVER_EXCEPTION,"服务端异常");
+    public static final ResultCode SERVER_EXCEPTION = new ResultCode(RESULT_CODE_SERVER_EXCEPTION,"服务端异常");
 
     /**
      * 状态异常
      */
-    public static final DefaultResultCode SATTUS_ERROR = new DefaultResultCode(RESULT_CODE_STATUS_ERROR, "状态异常");
+    public static final ResultCode SATTUS_ERROR = new ResultCode(RESULT_CODE_STATUS_ERROR, "状态异常");
 
     /**
      * 需要登录
      */
-    public static final DefaultResultCode LOGIN_REQIRE = new DefaultResultCode(RESULT_CODE_LOGIN_REQUIRED, "需要登录");
+    public static final ResultCode LOGIN_REQIRE = new ResultCode(RESULT_CODE_LOGIN_REQUIRED, "需要登录");
 
     /**
      * 权限不足
      */
-    public static final DefaultResultCode ACCESS_DENIE = new DefaultResultCode(RESULT_CODE_ACCESS_DENIE, "权限不足,禁止访问");
+    public static final ResultCode ACCESS_DENIE = new ResultCode(RESULT_CODE_ACCESS_DENIE, "权限不足,禁止访问");
     /**
      * 数据已经存在
      */
-    public static final DefaultResultCode DUPLICATE_DATA = new DefaultResultCode(RESULT_CODE_DUPLICATE_DATA, "数据已经存在，保存失败");
+    public static final ResultCode DUPLICATE_DATA = new ResultCode(RESULT_CODE_DUPLICATE_DATA, "数据已经存在，保存失败");
     /**
      * 数据已经存在
      */
-    public static final DefaultResultCode CREAT_PROCESS_FAILE = new DefaultResultCode(RESULT_CODE_CREAT_PROCESS_FAILE, "流程创建失败");
+    public static final ResultCode CREAT_PROCESS_FAILE = new ResultCode(RESULT_CODE_CREAT_PROCESS_FAILE, "流程创建失败");
     /**
      *
      * @param code
      * @param message
      */
-    public DefaultResultCode(int code, String message) {
+    public ResultCode(int code, String message) {
         super();
         this.code = code;
         this.message = message;
@@ -104,8 +104,8 @@ public class DefaultResultCode implements Serializable{
      * @param message
      * @return
      */
-    public DefaultResultCode clone(String message){
-        return new DefaultResultCode(this.code, message);
+    public ResultCode clone(String message){
+        return new ResultCode(this.code, message);
     }
 
     /**

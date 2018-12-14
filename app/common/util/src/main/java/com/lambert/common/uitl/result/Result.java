@@ -2,15 +2,12 @@ package com.lambert.common.uitl.result;
 
 import java.io.Serializable;
 
-public class DefaultResult<T> implements Serializable {
+public class Result<T> implements Serializable {
 
 	 /** serialId */
 	private static final long serialVersionUID = -3035296152778492506L;
 
-	 /**
-     * 是否流程
-     */
-    private boolean           flow;
+
 
 	 /**
      * 返回的数据对象
@@ -27,7 +24,7 @@ public class DefaultResult<T> implements Serializable {
      *
      * @return
      */
-    public T getValue() {
+    public T getData() {
         return value;
     }
 
@@ -36,7 +33,7 @@ public class DefaultResult<T> implements Serializable {
      *
      */
     @Deprecated
-    public void setValue(T value) {
+    public void setData(T value) {
         this.value = value;
     }
 
@@ -45,8 +42,8 @@ public class DefaultResult<T> implements Serializable {
      *
      * @return
      */
-    public DefaultResultCode getResultCode() {
-        return resultCode;
+    public int getResultCode() {
+        return resultCode.getCode();
     }
 
     @Deprecated
@@ -54,7 +51,7 @@ public class DefaultResult<T> implements Serializable {
      * 此方法不应该被调用.此方法只是为了能够正常json序列化.请走构造函数
      *
      */
-    public void setResultCode(DefaultResultCode resultCode) {
+    public void setResultCode(ResultCode resultCode) {
         this.resultCode = resultCode;
     }
 
@@ -63,7 +60,7 @@ public class DefaultResult<T> implements Serializable {
      * @param value
      * @param resultCode
      */
-    public DefaultResult(T value, DefaultResultCode resultCode) {
+    public Result(T value, ResultCode resultCode) {
         super();
         this.value = value;
         this.resultCode = resultCode;
@@ -73,25 +70,25 @@ public class DefaultResult<T> implements Serializable {
      *
      * 返回码
      */
-    private DefaultResultCode resultCode;
+    private ResultCode resultCode;
 
     /**
      * 只用value进行构造,code总是为success
      * @param valueObject
      */
-    public DefaultResult(T valueObject) {
-        this(valueObject, DefaultResultCode.SUCCESS);
+    public Result(T valueObject) {
+        this(valueObject, ResultCode.SUCCESS);
     }
 
     /**
      * 只用code进行构造,value为null
      * @param resultCode
      */
-    public DefaultResult(DefaultResultCode resultCode) {
+    public Result(ResultCode resultCode) {
         this(null, resultCode);
     }
 
-    public DefaultResult(DefaultResultCode resultCode, String customErrMsg) {
+    public Result(ResultCode resultCode, String customErrMsg) {
         this(null, resultCode);
         this.customErrMsg = customErrMsg;
     }
@@ -109,14 +106,6 @@ public class DefaultResult<T> implements Serializable {
         if (this.customErrMsg != null)
             return this.customErrMsg;
         return this.resultCode.getMessage();
-    }
-
-    public boolean isFlow() {
-        return flow;
-    }
-
-    public void setFlow(boolean flow) {
-        this.flow = flow;
     }
 
     public void setCustomErrMsg(String customErrMsg) {

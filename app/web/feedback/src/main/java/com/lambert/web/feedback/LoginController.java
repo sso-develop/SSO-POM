@@ -6,21 +6,16 @@ import java.net.URLDecoder;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.validation.constraints.NotNull;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.alibaba.fastjson.JSON;
 import com.lambert.biz.uums.UumsUserInfoManager;
-import com.lambert.biz.uums.impl.UumsUserInfoManagerImpl;
 import com.lambert.biz.uums.model.UumsUserInfoModel;
 import com.lambert.common.service.facade.filter.SSOFilter;
 import com.lambert.common.service.facade.model.LoginInfo;
@@ -29,7 +24,7 @@ import com.lambert.common.service.facade.result.SSOResultCode;
 import com.lambert.common.service.facade.util.SessionUtils;
 import com.lambert.common.uitl.CookieUtils;
 import com.lambert.common.uitl.provider.IdProvider;
-import com.lambert.common.uitl.result.DefaultResult;
+import com.lambert.common.uitl.result.Result;
 import com.lambert.core.service.token.TokenManager;
 
 @Controller
@@ -69,13 +64,13 @@ public class LoginController {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public String login(String backUrl, String appCode,String username,String password,String captcha,HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
-		DefaultResult<UumsUserInfoModel> result = uumsUserInfoManager.queryUumsUserInfoCountByOperatorName(username);
-		if(result.getResultCode().getCode() != SSOResultCode.SUCCESS.getCode()){
+		Result<UumsUserInfoModel> result = uumsUserInfoManager.queryUumsUserInfoCountByOperatorName(username);
+		if(result.getResultCode()!= SSOResultCode.SUCCESS.getCode()){
 			request.setAttribute("errorMessage", result.getMsg());
 			return goLoginPath(backUrl, appCode, request);
 		}
 		
-		UumsUserInfoModel uumsUserInfoModel = result.getValue();
+		UumsUserInfoModel uumsUserInfoModel = result.getData();
 		if (uumsUserInfoModel == null) {
 			request.setAttribute("errorMessage", "用户不存在，请重新输入");
 			return goLoginPath(backUrl, appCode, request);
@@ -84,7 +79,7 @@ public class LoginController {
 			request.setAttribute("errorMessage", "密码不正确，请重新输入");
 			return goLoginPath(backUrl, appCode, request);
 		}
-		UumsUserInfoModel user = (UumsUserInfoModel) result.getValue();
+		UumsUserInfoModel user = (UumsUserInfoModel) result.getData();
 		LoginInfo loginUser = new LoginInfo(user.getId(), user.getOperatorName());
 		//~ 获取 cookie 中的 token
 		String token = CookieUtils.getCookie(request, "token");

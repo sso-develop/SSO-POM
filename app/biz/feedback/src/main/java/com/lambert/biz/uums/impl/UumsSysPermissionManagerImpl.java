@@ -16,8 +16,8 @@ import com.lambert.biz.uums.convertor.UumsSysPermissionConvertor;
 import com.lambert.biz.uums.model.UumsSysPermissionModel;
 import com.lambert.biz.uums.queryObj.UumsSysPermissionQueryObj;
 import com.lambert.common.uitl.LoggerUtil;
-import com.lambert.common.uitl.result.DefaultResult;
-import com.lambert.common.uitl.result.DefaultResultCode;
+import com.lambert.common.uitl.result.Result;
+import com.lambert.common.uitl.result.ResultCode;
 import com.lambert.common.uitl.result.Pager;
 import com.lambert.common.uums.dal.daointerface.UumsSysAppDAO;
 import com.lambert.common.uums.dal.daointerface.UumsSysPermissionDAO;
@@ -41,7 +41,7 @@ public class UumsSysPermissionManagerImpl implements UumsSysPermissionManager{
 	/** 
 	 * @see com.lambert.biz.uums.UumsSysPermissionManager#queryUumsSysPermissionByPager(com.lambert.common.uitl.result.Pager)
 	 */
-	public DefaultResult<Pager> queryUumsSysPermissionByPager(UumsSysPermissionQueryObj queryObj) {
+	public Result<Pager> queryUumsSysPermissionByPager(UumsSysPermissionQueryObj queryObj) {
 		try {
 			Pager pager = new Pager(queryObj.getPageNumber(), queryObj.getPageSize());
 			List<UumsSysPermissionDO> uumsSysPermissionDOList = uumsSysPermissionDAO.queryUumsSysPermissionByPager(pager.getBeginIndex(), pager.getEndIndex(),
@@ -56,55 +56,55 @@ public class UumsSysPermissionManagerImpl implements UumsSysPermissionManager{
 			}
 			pager.setResult(models);
 			pager.setTotalCount(count);
-			return new DefaultResult<Pager>(pager);
+			return new Result<Pager>(pager);
 		} catch (Exception ex) {
 			LOGGER.error(ex.getMessage(), ex);
-			return new DefaultResult(DefaultResultCode.SERVER_EXCEPTION, ex.getMessage());
+			return new Result(ResultCode.SERVER_EXCEPTION, ex.getMessage());
 		}
 	}
 
 	/** 
 	 * @see com.lambert.biz.uums.UumsSysPermissionManager#insertUumsSysPermission(com.lambert.biz.uums.model.UumsSysPermissionModel)
 	 */
-	public DefaultResult<Boolean> insertUumsSysPermission(UumsSysPermissionModel permissionModel) {
+	public Result<Boolean> insertUumsSysPermission(UumsSysPermissionModel permissionModel) {
 		try {
 			UumsSysPermissionDO uumsSysPermissionDO = UumsSysPermissionConvertor.convertor2DO(permissionModel);
 			uumsSysPermissionDAO.insertUumsSysPermission(uumsSysPermissionDO);
-			return new DefaultResult<Boolean>(true);
+			return new Result<Boolean>(true);
 		} catch (Exception ex) {
 			LOGGER.error(ex.getMessage(), ex);
-			return new DefaultResult(DefaultResultCode.SERVER_EXCEPTION, ex.getMessage());
+			return new Result(ResultCode.SERVER_EXCEPTION, ex.getMessage());
 		}
 	}
 
 	/** 
 	 * @see com.lambert.biz.uums.UumsSysPermissionManager#deleteUumsSysPermissionById(long)
 	 */
-	public DefaultResult<Boolean> deleteUumsSysPermissionById(long id) {
+	public Result<Boolean> deleteUumsSysPermissionById(long id) {
 		try {
 			uumsSysPermissionDAO.deleteUumsSysPermissionById(id);
-			return new DefaultResult<Boolean>(true);
+			return new Result<Boolean>(true);
 		} catch (Exception ex) {
 			LOGGER.error(ex.getMessage(), ex);
-			return new DefaultResult(DefaultResultCode.SERVER_EXCEPTION, ex.getMessage());
+			return new Result(ResultCode.SERVER_EXCEPTION, ex.getMessage());
 		}
 	}
 
 	/** 
 	 * @see com.lambert.biz.uums.UumsSysPermissionManager#updateUumsSysPermissionById(com.lambert.biz.uums.model.UumsSysPermissionModel)
 	 */
-	public DefaultResult<Boolean> updateUumsSysPermissionById(UumsSysPermissionModel permissionModel) {
+	public Result<Boolean> updateUumsSysPermissionById(UumsSysPermissionModel permissionModel) {
 		try {
 			UumsSysPermissionDO uumsSysPermissionDO = UumsSysPermissionConvertor.convertor2DO(permissionModel);
 			uumsSysPermissionDAO.updateUumsSysPermissionById(uumsSysPermissionDO);
-			return new DefaultResult<Boolean>(true);
+			return new Result<Boolean>(true);
 		} catch (Exception ex) {
 			LOGGER.error(ex.getMessage(), ex);
-			return new DefaultResult(DefaultResultCode.SERVER_EXCEPTION, ex.getMessage());
+			return new Result(ResultCode.SERVER_EXCEPTION, ex.getMessage());
 		}
 	}
 
-	public DefaultResult<List<UumsSysPermissionModel>> queryUumsSysPermission(UumsSysPermissionQueryObj queryObj) {
+	public Result<List<UumsSysPermissionModel>> queryUumsSysPermission(UumsSysPermissionQueryObj queryObj) {
 		try {
 			List<UumsSysPermissionModel> list = new ArrayList<UumsSysPermissionModel>();
 			String appCode = null;
@@ -112,7 +112,7 @@ public class UumsSysPermissionManagerImpl implements UumsSysPermissionManager{
 				UumsSysAppDO appDO = uumsSysAppDAO.queryUumsSysAppById(queryObj.getAppId());
 				if(appDO == null) {
 					LoggerUtil.info(LOGGER, "【queryUumsSysPermission】:app id : "+queryObj.getAppId()+" 不存在");
-					return new DefaultResult(DefaultResultCode.ILLEGAL_PARAMS,"app id : "+queryObj.getAppId()+" 不存在");
+					return new Result(ResultCode.ILLEGAL_PARAMS,"app id : "+queryObj.getAppId()+" 不存在");
 				}
 				appCode = appDO.getCode();
 			}
@@ -121,10 +121,10 @@ public class UumsSysPermissionManagerImpl implements UumsSysPermissionManager{
 				UumsSysAppDO appDO = uumsSysAppDAO.queryUumsSysAppById(uumsSysPermissionDO.getAppId());
 				list.add(UumsSysPermissionConvertor.convertor2Model(uumsSysPermissionDO,appDO));
 			}
-			return new DefaultResult<List<UumsSysPermissionModel>>(list);
+			return new Result<List<UumsSysPermissionModel>>(list);
 		} catch (Exception ex) {
 			LOGGER.error(ex.getMessage(), ex);
-			return new DefaultResult(DefaultResultCode.SERVER_EXCEPTION, ex.getMessage());
+			return new Result(ResultCode.SERVER_EXCEPTION, ex.getMessage());
 		}
 	}
 }

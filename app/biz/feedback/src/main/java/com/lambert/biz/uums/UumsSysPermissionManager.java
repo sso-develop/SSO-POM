@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.lambert.biz.uums.model.UumsSysPermissionModel;
 import com.lambert.biz.uums.queryObj.UumsSysPermissionQueryObj;
-import com.lambert.common.uitl.result.DefaultResult;
+import com.lambert.common.uitl.result.Result;
 import com.lambert.common.uitl.result.Pager;
 /**
  * 
@@ -18,32 +18,32 @@ public interface UumsSysPermissionManager {
 	 * @param pager
 	 * @return
 	 */
-	public DefaultResult<Pager> queryUumsSysPermissionByPager(UumsSysPermissionQueryObj queryObj);
+	public Result<Pager> queryUumsSysPermissionByPager(UumsSysPermissionQueryObj queryObj);
 	/**
 	 * 
 	 * @param queryObj
 	 * @return
 	 */
-	public DefaultResult<List<UumsSysPermissionModel>> queryUumsSysPermission(UumsSysPermissionQueryObj queryObj);
+	public Result<List<UumsSysPermissionModel>> queryUumsSysPermission(UumsSysPermissionQueryObj queryObj);
 	/**
 	 * 新增权限
 	 * 
 	 * @param permissionModel
 	 * @return
 	 */
-	public DefaultResult<Boolean> insertUumsSysPermission(UumsSysPermissionModel permissionModel);
+	public Result<Boolean> insertUumsSysPermission(UumsSysPermissionModel permissionModel);
 	/**
 	 * 删除权限
 	 * 
 	 * @param id
 	 * @return
 	 */
-	public DefaultResult<Boolean> deleteUumsSysPermissionById(long id);
+	public Result<Boolean> deleteUumsSysPermissionById(long id);
 	/**
 	 * 
 	 * 更新
 	 * @param permissionModel
 	 * @return
 	 */
-	public DefaultResult<Boolean> updateUumsSysPermissionById(UumsSysPermissionModel permissionModel);
+	public Result<Boolean> updateUumsSysPermissionById(UumsSysPermissionModel permissionModel);
 }

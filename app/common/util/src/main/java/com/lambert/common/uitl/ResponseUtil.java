@@ -19,12 +19,19 @@ public class ResponseUtil {
             response.getOutputStream().flush();
             response.getOutputStream().close();
         } catch (IOException e) {
-            e.printStackTrace();
+            writeFail2String(response,e);
         }
 
     }
 
     public  static  void writeFail2String(HttpServletResponse response,Exception e){
-
+        response.setContentType(CONTENT_TYPE);
+        try {
+            response.getOutputStream().write(e.getMessage().getBytes());
+            response.getOutputStream().flush();
+            response.getOutputStream().close();
+        } catch (IOException ex) {
+           ex.printStackTrace();
+        }
     }
 }

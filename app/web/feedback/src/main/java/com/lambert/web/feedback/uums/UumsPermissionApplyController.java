@@ -1,20 +1,20 @@
 package com.lambert.web.feedback.uums;
 
+import com.lambert.web.feedback.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.lambert.biz.uums.UumsPermissionApplyManager;
 import com.lambert.biz.uums.model.UumsPermissionApplyModel;
 import com.lambert.biz.uums.queryObj.UumsPermissionApplyQueryObj;
 import com.lambert.common.service.facade.model.SessionUser;
 import com.lambert.common.service.facade.util.SessionUtils;
-import com.lambert.common.uitl.result.DefaultResult;
-import com.lambert.common.uitl.result.DefaultWebUtils;
+import com.lambert.common.uitl.result.Result;
 import com.lambert.common.uitl.result.Pager;
-import com.lambert.common.uitl.result.ResultModel;
+
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * 
@@ -22,30 +22,27 @@ import com.lambert.common.uitl.result.ResultModel;
  *
  */
 @Controller
-public class UumsPermissionApplyController {
+public class UumsPermissionApplyController extends BaseController {
 	
 	@Autowired
 	private UumsPermissionApplyManager uumsPermissionApplyManager;
 	
 	@RequestMapping(value="/insertUumsPermissionApply.json",method = RequestMethod.POST) 
-	public @ResponseBody ResultModel insertUumsPermissionApply(ResultModel resultModel,UumsPermissionApplyModel uumsPermissionApplyModel){
+	public void insertUumsPermissionApply(HttpServletResponse response, UumsPermissionApplyModel uumsPermissionApplyModel){
 		SessionUser sessionUser = SessionUtils.getSessionUser();
 		uumsPermissionApplyModel.setOperater(sessionUser.getAccount());
-		DefaultResult<Boolean> result = uumsPermissionApplyManager.insertUumsPermissionApply(uumsPermissionApplyModel);
-		DefaultWebUtils.putResult2ModelMap(result, resultModel);
-		return resultModel;
+		Result<Boolean> result = uumsPermissionApplyManager.insertUumsPermissionApply(uumsPermissionApplyModel);
+		writeSuccess2Response(response,result);
 	}
 	
 	/**
 	 * 
-	 * @param resultModel
 	 * @return
 	 */
 	@RequestMapping(value="/queryUumsPermissionApplyByPager.json",method = RequestMethod.POST) 
-	public @ResponseBody ResultModel queryUumsPermissionApplyByPager(ResultModel resultModel,UumsPermissionApplyQueryObj queryObj) {
-		DefaultResult<Pager> result = uumsPermissionApplyManager.queryUumsPermissionApplyByPager(queryObj);
-		DefaultWebUtils.putResult2ModelMap(result, resultModel);
-		return resultModel;
+	public void queryUumsPermissionApplyByPager(HttpServletResponse response,UumsPermissionApplyQueryObj queryObj) {
+		Result<Pager> result = uumsPermissionApplyManager.queryUumsPermissionApplyByPager(queryObj);
+		writeSuccess2Response(response,result);
 	}
 
 }
