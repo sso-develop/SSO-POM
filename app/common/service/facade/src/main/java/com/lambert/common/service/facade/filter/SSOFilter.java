@@ -90,7 +90,7 @@ public class SSOFilter extends ClientFilter {
 		String token = request.getParameter(SSO_TOKEN_NAME);
 		if (token != null) {
 			LoginInfo rpcUser = authenticationRpcService.findAuthInfo(token);
-			 if(rpcUser != null) {
+			if(rpcUser != null) {
 				invokeAuthenticationInfoInSession(request, token, rpcUser.getAccount(),rpcUser.getUserId());
 				return token;
 			}
@@ -104,8 +104,7 @@ public class SSOFilter extends ClientFilter {
 	 * @return
 	 */
 	private boolean isLogined(String token) {
-		//return authenticationRpcService.validate(token);
-		return true;
+		return authenticationRpcService.validate(token);
 	}
 
 	protected boolean isAjaxRequest(HttpServletRequest request) {
