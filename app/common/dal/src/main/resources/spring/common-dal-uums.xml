@@ -31,9 +31,4 @@
 		<property name="mapperInterface" value="com.lambert.common.uums.dal.daointerface.UumsUserPermissionRelationDAO"/>
 		<property name="sqlSessionFactory" ref="sessionFactory"/>
 	</bean>
-	<!-- 权限申请 -->
-	<bean id="uumsPermissionApplyDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="com.lambert.common.uums.dal.daointerface.UumsPermissionApplyDAO"/>
-		<property name="sqlSessionFactory" ref="sessionFactory"/>
-	</bean>
 </beans>
