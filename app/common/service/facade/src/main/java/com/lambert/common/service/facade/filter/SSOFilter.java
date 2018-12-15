@@ -41,7 +41,7 @@ public class SSOFilter extends ClientFilter {
 					response.sendRedirect(request.getRequestURL().toString());
 				}else redirectLogin(request, response,chain);
 			}
-			else if (isLogined(token))chain.doFilter(request, response);
+			else if (isLogined(request,token))chain.doFilter(request, response);
 			else redirectLogin(request, response,chain);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -103,8 +103,12 @@ public class SSOFilter extends ClientFilter {
 	 * @param token
 	 * @return
 	 */
-	private boolean isLogined(String token) {
-		return authenticationRpcService.validate(token);
+	private boolean isLogined(HttpServletRequest request,String token) {
+		boolean flag = authenticationRpcService.validate(token);
+		if(!flag){
+			SessionUtils.invalidate(request);
+		}
+		return flag;
 	}
 
 	protected boolean isAjaxRequest(HttpServletRequest request) {
