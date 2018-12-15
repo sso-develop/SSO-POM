@@ -13,6 +13,4 @@
        <bean id="uumsUserInfoManager" class="com.lambert.biz.uums.impl.UumsUserInfoManagerImpl"/>
        <bean id="uumsSysAppManager" class="com.lambert.biz.uums.impl.UumsSysAppManagerImpl"/>
        <bean id="uumsSysPermissionManager" class="com.lambert.biz.uums.impl.UumsSysPermissionManagerImpl"/>
-       <!-- 权限申请 -->
-       <bean id="uumsPermissionApplyManager" class="com.lambert.biz.uums.impl.UumsPermissionApplyManagerImpl"/>
 </beans>         
