@@ -12,6 +12,6 @@
 	<bean id="redisShardUtil" class="com.lambert.common.uitl.redis.RedisShardUtil">
 		<property name="shardedJedisPoolConfig" ref="shardedJedisPoolConfig" />
 	</bean> -->
-	<bean id="tokenManager" class="com.lambert.core.service.token.LocalTokenManager">
-	</bean>
+	<bean id="tokenManager" class="com.lambert.core.service.token.LocalTokenManager"/>
+	<bean id="rsaManager" class="com.lambert.core.service.rsa.LocalRSAManager"/>
 </beans>

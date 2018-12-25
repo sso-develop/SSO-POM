@@ -2,9 +2,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-  <script type="text/javascript">
+<title>统一登录管理平台</title>
+    <script type="text/javascript">
+        //获取url中的参数
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+            if (r != null) return unescape(r[2]); return null; //返回参数值
+        }
 		var userName = '${userName}';
+		var __vt_param__ = getUrlParam("__vt_param__");
+		localStorage.setItem("token",__vt_param__);
+		//console.log("sso======="+localStorage.getItem("token"))
     </script>
 </head>
 <body>

@@ -7,6 +7,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.lambert.core.service.rsa.RsaManager;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,6 +43,8 @@ public class LoginController {
 	@Autowired
 	private TokenManager tokenManager;
 	@Autowired
+	private RsaManager rsaManager;
+	@Autowired
 	private UumsUserInfoManager uumsUserInfoManager;
 	
 	
@@ -75,7 +78,14 @@ public class LoginController {
 			request.setAttribute("errorMessage", "用户不存在，请重新输入");
 			return goLoginPath(backUrl, appCode, request);
 		}
-		if(!uumsUserInfoModel.getPassword().equals(password)){
+
+		String pwd = rsaManager.checkRSAKey(username,password);
+		if(StringUtils.isBlank(pwd)){
+			request.setAttribute("errorMessage", "登录失败");
+			return goLoginPath(backUrl, appCode, request);
+		}
+
+		if(!uumsUserInfoModel.getPassword().equals(pwd)){
 			request.setAttribute("errorMessage", "密码不正确，请重新输入");
 			return goLoginPath(backUrl, appCode, request);
 		}
