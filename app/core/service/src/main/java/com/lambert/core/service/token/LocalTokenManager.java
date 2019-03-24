@@ -83,6 +83,9 @@ public class LocalTokenManager extends TokenManager {
 	 * @param dummyUser
 	 */
 	private void extendExpiredTime(DummyUser dummyUser) {
+
+		System.currentTimeMillis();
+
 		dummyUser.expired = new Date(new Date().getTime() + tokenTimeout * 1000);
 		dummyUser.loginUser.setExpired(dummyUser.expired);
 	}

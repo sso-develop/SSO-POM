@@ -19,6 +19,14 @@ public class SystemConfig {
 	 * 单点登录应用CODE
 	 */
 	private static String SSO_APP_CODE;
+	/**
+	 *
+	 */
+	public static String ASSETS_SERVER_HOST;
+	/**
+	 *
+	 */
+	public static String ASSETS_SERVER_PORT;
 	
 	public void setSsoAppCode(String ssoAppCode) {
 		this.SSO_APP_CODE = ssoAppCode;
@@ -40,5 +48,16 @@ public class SystemConfig {
 	
 	public String getVelocityFile() {
 		return this.VELOCITY_FILE_RESOURCE_LOADER_PAHT;
+	}
+
+	//assetsServer_host = linzekuan.gotoip11.com
+	//assetsServer_port = 80
+
+	public void setAssetsServerHost(String assetsServerHost){
+		this.ASSETS_SERVER_HOST = assetsServerHost;
+	}
+
+	public void setAssetsServerPort(String assetsServerPort){
+		this.ASSETS_SERVER_PORT = assetsServerPort;
 	}
 }

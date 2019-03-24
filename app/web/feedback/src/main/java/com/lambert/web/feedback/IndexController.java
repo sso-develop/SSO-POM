@@ -7,6 +7,7 @@ import com.lambert.biz.uums.UumsSysAppManager;
 import com.lambert.biz.uums.model.UumsSysAppModel;
 import com.lambert.biz.uums.queryObj.UumsSysAppQueryObj;
 import com.lambert.common.uitl.result.Result;
+import com.lambert.core.model.model.SystemConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,7 +30,10 @@ public class IndexController {
 	public String main(HttpServletRequest request, ServletResponse response, Model model){
 		//SessionUser sessionUser = SessionUtils.getSessionUser(request);
 		SessionUser sessionUser = SessionUtils.getSessionUser();
+
 		model.addAttribute("userName", sessionUser.getAccount());
+		model.addAttribute("assetsServerHost", SystemConfig.ASSETS_SERVER_HOST);
+		model.addAttribute("assetsServerPort", SystemConfig.ASSETS_SERVER_PORT);
      	return "index";
 		
 	}

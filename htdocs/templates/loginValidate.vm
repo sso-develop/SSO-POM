@@ -1,27 +1,25 @@
-#set($assetsPrefix="http://$assetsServerHost:$assetsServerPort/sso")
-##set($assetsPrefix='http://127.0.0.1:8080')
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>统一登录管理平台</title>
-    <script type="text/javascript">
+<title>Insert title here</title>
+<script type="text/javascript">
         //获取url中的参数
         function getUrlParam(name) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
             var r = window.location.search.substr(1).match(reg);  //匹配目标参数
             if (r != null) return unescape(r[2]); return null; //返回参数值
         }
-		var userName = '${userName}';
 		var __vt_param__ = getUrlParam("__vt_param__");
+		var goto = getUrlParam("goto");
 		localStorage.setItem("token",__vt_param__);
-		//console.log("sso======="+localStorage.getItem("token"))
+		window.location.href = goto;
+		console.log(goto)
     </script>
 </head>
 <body>
-<div id="root"></div>
+<div>
+   正在登录
+</div>
 </body>
 </html>
-<!--<script type="text/javascript" src="http://192.168.0.102:8081//dist/0.1.0/bundle.js"></script>-->
-<script type="text/javascript" src="$assetsPrefix/bundle.js"></script>
