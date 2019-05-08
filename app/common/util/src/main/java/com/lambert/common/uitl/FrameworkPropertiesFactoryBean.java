@@ -55,8 +55,7 @@ public class FrameworkPropertiesFactoryBean extends PropertiesFactoryBean {
 
 	/**
 	 * 加载外部的logback配置文件
-	 * 
-	 * @param externalConfigFileLocation
+	 *
 	 *            配置文件路径
 	 * @throws IOException
 	 * @throws JoranException
